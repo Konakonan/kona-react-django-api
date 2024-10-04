@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button:disabled{
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div class="example example01">
+        <button class="button" id="button">クリックしてね！</button>
+    </div>
+    <div class="example example02">
+        <button class="button" id="button-add">リスト要素を追加</button>
+        <button class="button" id="button-clear">リスト要素を削除 </button>
+        <div class="list-class">
+            <h3>リスト要素一覧</h3>
+            <ul id="list"></ul>
+        </div>
+    </div>
+    <div class="example example03"></div>
+
+
+    <script>
+        'use srtict'
+        const button=document.getElementById("button");
+
+        button.addEventListener('click',function(){
+            this.innerHTML="クリックありがとう";
+            this.setAttribute("disabled",true)
+        });
+        console.log(button);
+
+        //リストの追加と削除
+        const buttonAdd=document.getElementById("button-add");
+        const buttonClear=document.getElementById("button-clear");
+        const list=document.getElementById("list");
+
+        buttonAdd.addEventListener('click',function(){
+            const elemnt=document.createElement('li');
+            elemnt.innerHTML='リスト';
+            list.appendChild(elemnt);
+        });
+
+        buttonClear.addEventListener('click',function(){
+            list.removeChild(list.lastChild);
+        });
+    </script>
+</body>
+</html>

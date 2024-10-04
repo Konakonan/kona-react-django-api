@@ -1,0 +1,18 @@
+:root {
+    font-size: 16px;
+  }
+
+  /* abcクラスのp要素を選択 */
+p.abc {
+    color: firebrick;
+  }
+
+
+  input[type="email"] {  /* 変更 */
+    background-color: beige;
+  }
+
+  /* nav要素の子孫であるli要素 */
+nav li {
+    color: firebrick;
+  }
