@@ -4,9 +4,10 @@ from .views import ProductViewSewt
 from .views import create_person
 
 router = DefaultRouter()
-router.register(r'person',ProductViewSewt)
+router.register(r'person2',ProductViewSewt)
 
 urlpatterns = [
-    path("",include(router.urls)),
-     path('api/person/', create_person, name='create_person')
+     path('person/', create_person, name='create_person'),
+    path('',include(router.urls)),
+
 ]

@@ -4,20 +4,28 @@ import { Link, useLocation } from 'react-router-dom';
 
 const Kakunin = () => {
 
-    const location = useLocation();
+  const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const name = queryParams.get('name');
-  const gender= queryParams.get('gender');
+  let gender= queryParams.get('gender');
   const age = queryParams.get('age');
   const address=queryParams.get('address');
+  let gender2='';
 
-  const djanoAdd=async(e)=>{
+  const djangoAdd=async(e)=>{
     e.preventDefault(); //イベントのデフォルトの動作をキャンセルします。例えば、フォームを送信する際、ブラウザは通常、ページをリロードします
+    
+    if(gender==='男性'){
+      gender2='M';
+    }else if(gender==='女性'){
+      gender2='F';
+    }else{
+      gender2='O';
+    };
     const date={
-        id:10,
         name:name,
         age:age,
-        gender:"M",
+        gender:gender2,
         address:address
     };
 
@@ -47,7 +55,7 @@ const Kakunin = () => {
     <button>戻る</button>
     </Link>
     <dev></dev>
-    <button onClick={djanoAdd}>登録</button>
+    <button onClick={djangoAdd}>登録</button>
     </div>
     </>
   )
