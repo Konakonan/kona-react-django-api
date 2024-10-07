@@ -1,9 +1,11 @@
 import axios from 'axios';
-import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 const Kakunin = () => {
 
+  const navigate = useNavigate();
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const name = queryParams.get('name');
@@ -11,6 +13,7 @@ const Kakunin = () => {
   const age = queryParams.get('age');
   const address=queryParams.get('address');
   let gender2='';
+
 
   const djangoAdd=async(e)=>{
     e.preventDefault(); //イベントのデフォルトの動作をキャンセルします。例えば、フォームを送信する際、ブラウザは通常、ページをリロードします
@@ -36,8 +39,10 @@ const Kakunin = () => {
            } ,
         });
         console.log('date saced:' ,response.data);
+        navigate('/kanryo',{state:{message:'登録完了しました'}});
     }catch(error){
         console.error('Error saving date:',error.response?error.response.data:error.message);
+        navigate('/kanryo',{state:{message:'エラーが発生しました'}});
     }
   };
 

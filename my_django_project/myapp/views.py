@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework import status
 import json
 from .serializers import PersonSerializer
+from django.http import JsonResponse
 
 
 
@@ -26,3 +27,13 @@ def create_person(request):
             serializer.save()  
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    
+@api_view(['GET'])   
+def create_person(request):
+    if request.method=='GET':
+        query = request.GET.get('query', '')
+        results = Person.objects.filter(name__icontains=query) 
+        data = [{'name': result.name} for result in results]  
+    return JsonResponse(data, safe=False)
+        

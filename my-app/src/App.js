@@ -2,9 +2,11 @@ import './App.css';
 import Mainmenu from './components/Mainmenu';
 import Tourokupage from './components/Tourokupage';
 import Sansyopage from './components/Sansyopage';
-import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
-import { useState,useEffect, useRef } from 'react';
 import Kakunin from './components/Kakunin';
+import Kanryo from './components/Kanryo';
+import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
+
+
 
 function App() {
   /* apiと繋ぐコード     */
@@ -35,6 +37,7 @@ function App() {
       <Route path='/touroku' element={<Tourokupage />} />
       <Route path='/sansyo' element={<Sansyopage />} />
       <Route exact path="/kakunin" element={<Kakunin/>} />
+      <Route exact path="/kanryo" element={<Kanryo />} />
     
     </Routes>
     </dev>
