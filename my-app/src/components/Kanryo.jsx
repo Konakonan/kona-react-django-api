@@ -16,6 +16,9 @@ const Kanryo = () => {
         if(message==="登録完了しました"){
             setLinks("メインメニュに戻る");
             setPaths("/");
+        }else if(message==="詳細を確認できるのは1名のみ選択さた時です"){
+            setLinks("戻る");
+            setPaths("/Sansyo");
         }else{
             setLinks("戻る");
             setPaths("/touroku");

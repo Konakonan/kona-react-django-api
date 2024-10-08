@@ -4,6 +4,7 @@ import Tourokupage from './components/Tourokupage';
 import Sansyopage from './components/Sansyopage';
 import Kakunin from './components/Kakunin';
 import Kanryo from './components/Kanryo';
+import Syousai from './components/Syousai';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -35,9 +36,11 @@ function App() {
     <Routes>
       <Route exact path="/" element={<Mainmenu/>} />
       <Route path='/touroku' element={<Tourokupage />} />
-      <Route path='/sansyo' element={<Sansyopage />} />
       <Route exact path="/kakunin" element={<Kakunin/>} />
       <Route exact path="/kanryo" element={<Kanryo />} />
+      
+      <Route path='/sansyo' element={<Sansyopage />} />
+      <Route path="/Syousai/:id" element={<Syousai/>} />
     
     </Routes>
     </dev>
