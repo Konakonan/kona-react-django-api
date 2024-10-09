@@ -5,6 +5,7 @@ import Sansyopage from './components/Sansyopage';
 import Kakunin from './components/Kakunin';
 import Kanryo from './components/Kanryo';
 import Syousai from './components/Syousai';
+import Syusei from './components/Syusei';
 import {BrowserRouter as Router,Route,Routes} from "react-router-dom"
 
 
@@ -41,7 +42,8 @@ function App() {
       
       <Route path='/sansyo' element={<Sansyopage />} />
       <Route path="/Syousai/:id" element={<Syousai/>} />
-    
+      <Route path='/Syusei/:id' element={<Syusei/>} />
+     
     </Routes>
     </dev>
     </Router>

@@ -10,15 +10,18 @@ from .serializers import PersonSerializer
 from django.http import JsonResponse
 
 
-
-
-
-class ProductViewSewt(viewsets.ModelViewSet):
+#ViewSet を使用することで、次のエンドポイントが自動的に生成されます
+#GET /products/: すべての Person オブジェクトのリストを取得
+#POST /products/: 新しい Person オブジェクトを作成
+#GET /products/{id}/: 指定した ID の Person オブジェクトを取得
+#PUT /products/{id}/: 指定した ID の Person オブジェクトを更新
+#DELETE /products/{id}/: 指定した ID の Person オブジェクトを削除
+class ProductViewSet(viewsets.ModelViewSet):
     queryset=Person.objects.all()
     serializer_class=ProductSerializer
     
     
-@api_view(['POST'])
+@api_view(['POST','GET'])
 def create_person(request):
     if request.method == 'POST':
         print("Received data:", json.dumps(request.data, indent=4))
@@ -28,11 +31,7 @@ def create_person(request):
             serializer.save()  
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-    
-@api_view(['GET'])   
-def create_person(request):
-    print(request.GET)
+
     if request.method=='GET':
         name = request.GET.get('name', None)
         min_age = request.GET.get('minage',None) 
@@ -61,7 +60,7 @@ def create_person(request):
             
 
         serializer = PersonSerializer(queryset, many=True)
-    return Response(serializer.data)
+        return Response(serializer.data)
 
 
         
