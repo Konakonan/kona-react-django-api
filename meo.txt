@@ -1,9 +1,16 @@
-
+--python仮想環境へのアクセス--
 myenv\Scripts\activate
 
 
+--メモ--
+ES7+ React/Redux/React-Native snippets: 
+この拡張機能をインストールすると、さまざまな便利なスニペットが使えます。
+React コンポーネントを作成するためのスニペットが含まれています。
+例えば、rafce と入力することで、アロー関数コンポーネントの枠組みが挿入されます。
 
 
+
+--データベース接続--
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',
@@ -18,7 +25,7 @@ DATABASES = {
 
 
 
-
+--pip list--
 asgiref              3.8.1
 Django               5.0.9
 django-mssql-backend 2.8.1
