@@ -413,6 +413,44 @@ select top 10 product_cd,unit_price,unit_cost,cast((unit_price-unit_cost) as var
 from product;
 
 --64
-select * 
-from product 
-where unit_price is null;
+select  
+avg((unit_price*1.0 - unit_cost)/unit_price) as "a"
+from product
+
+--65
+select top 10 * ,(new_price-unit_cost)/new_price as "a"
+from 
+(select product_cd,unit_price,unit_cost,
+floor(unit_cost/0.7) as "new_price" --floor関数、整数切り捨て
+from product)  as new_table1
+
+-- ～67まで、丸め方を変えるだけ。
+
+--68
+select * ,
+floor(unit_price*1.1) as "a"
+from product
+
+--69
+select top 10 * from receipt;
+select top 10 * from product;
+
+select  r.customer_id,p.category_major_cd,avg(amount) as "合計金額"
+from receipt r inner join  product p on r.product_cd=p.product_cd
+and category_major_cd=7
+group by r.customer_id,p.category_major_cd
+order by r.customer_id
+
+select customer_id,avg(amount) as "全合計金額"
+from receipt
+group by customer_id
+
+select table1.customer_id,table1.全合計金額,table2.合計金額,
+合計金額*1.0/全合計金額 as 'b' --*1.0する事で、double型に変換しています
+from (select customer_id,sum(amount) as "全合計金額"
+from receipt
+group by customer_id) as table1 inner join 
+(select  r.customer_id,p.category_major_cd,avg(amount) as "合計金額"
+from receipt r inner join  product p on r.product_cd=p.product_cd
+and category_major_cd=7
+group by r.customer_id,p.category_major_cd) as table2 on table1.customer_id=table2.customer_id
